@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 export default class Application extends Component{
-  constructor(){
-    super()
-    this.state = {
-    }
-  }
-
-
   render() {
+    let styles = {width: "100vw",
+            height: "100vh",
+            justifyContent: "center",
+            alignItems: "center",
+            display: "flex"}
     return(
-      <div>
-        <h1>Test</h1>
+      <div style={styles}
+      >
+        <p>coming soon</p>
       </div>
     )
   }
