@@ -30774,7 +30774,7 @@
 /* 511 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -30785,6 +30785,22 @@
 	var _react = __webpack_require__(510);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _ = __webpack_require__(512);
+
+	var _2 = _interopRequireDefault(_);
+
+	var _3 = __webpack_require__(513);
+
+	var _4 = _interopRequireDefault(_3);
+
+	var _5 = __webpack_require__(514);
+
+	var _6 = _interopRequireDefault(_5);
+
+	var _7 = __webpack_require__(515);
+
+	var _8 = _interopRequireDefault(_7);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30800,25 +30816,46 @@
 	  function Application() {
 	    _classCallCheck(this, Application);
 
-	    return _possibleConstructorReturn(this, (Application.__proto__ || Object.getPrototypeOf(Application)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (Application.__proto__ || Object.getPrototypeOf(Application)).call(this));
+
+	    _this.state = {
+	      picture: 1
+	    };
+	    return _this;
 	  }
 
 	  _createClass(Application, [{
-	    key: "render",
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+
+	      setInterval(function () {
+	        return _this2.changePicture();
+	      }, 1000);
+	    }
+	  }, {
+	    key: 'changePicture',
+	    value: function changePicture() {
+	      this.state.picture === 4 ? this.setState({ picture: 1 }) : this.setState({ picture: this.state.picture + 1 });
+	    }
+	  }, {
+	    key: 'render',
 	    value: function render() {
 	      var styles = { width: "100vw",
 	        height: "100vh",
 	        justifyContent: "center",
 	        alignItems: "center",
+	        flexDirection: "column",
 	        display: "flex" };
 	      return _react2.default.createElement(
-	        "div",
+	        'div',
 	        { style: styles
 	        },
+	        _react2.default.createElement('img', { src: __webpack_require__(516)("./" + this.state.picture + '.jpg') }),
 	        _react2.default.createElement(
-	          "p",
+	          'p',
 	          null,
-	          "coming soon"
+	          'coming soon'
 	        )
 	      );
 	    }
@@ -30828,6 +30865,54 @@
 	}(_react.Component);
 
 	exports.default = Application;
+
+/***/ }),
+/* 512 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "756414ba64f72afa56eaabf14a8a2268.jpg";
+
+/***/ }),
+/* 513 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "9be82926b4d65dff3bbc241b7587eb32.jpg";
+
+/***/ }),
+/* 514 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "253c1bb099577a1bc55e3906f8740cb9.jpg";
+
+/***/ }),
+/* 515 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "4b4e736c2626700692cc87c9473a0eb1.jpg";
+
+/***/ }),
+/* 516 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var map = {
+		"./1.jpg": 512,
+		"./2.jpg": 513,
+		"./3.jpg": 514,
+		"./4.jpg": 515
+	};
+	function webpackContext(req) {
+		return __webpack_require__(webpackContextResolve(req));
+	};
+	function webpackContextResolve(req) {
+		return map[req] || (function() { throw new Error("Cannot find module '" + req + "'.") }());
+	};
+	webpackContext.keys = function webpackContextKeys() {
+		return Object.keys(map);
+	};
+	webpackContext.resolve = webpackContextResolve;
+	module.exports = webpackContext;
+	webpackContext.id = 516;
+
 
 /***/ })
 /******/ ]);
