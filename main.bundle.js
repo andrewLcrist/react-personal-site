@@ -30873,7 +30873,6 @@
 	          for (var j = 0; j < totalLogos; j++) {
 
 	            var logo2 = logosFactoryArray[j];
-	            ctx.linewidth = 0.5;
 
 	            if (logo.rgba == logo2.rgba && calcDistance(logo, logo2) < 200) {
 	              ctx.strokeStyle = logo.rgba;
@@ -30884,15 +30883,6 @@
 	              ctx.stroke();
 	            }
 	          }
-
-	          ctx.fillStyle = logo.rgba;
-	          ctx.strokeStyle = logo.rgba;
-
-	          // const img = new Image()
-
-	          ctx.beginPath();
-	          ctx.fill();
-	          ctx.closePath();
 
 	          logo.x += logo.vx;
 	          logo.y += logo.vy;
