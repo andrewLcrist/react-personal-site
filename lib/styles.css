@@ -1,3 +1,7 @@
+html {
+  overflow: hidden;
+}
+
 canvas {
   position: fixed;
   top: 0;
@@ -9,3 +13,7 @@ canvas {
   z-index: -1;
   background-color: white;
 }
+/* 
+img {
+  opacity: .5;
+} */

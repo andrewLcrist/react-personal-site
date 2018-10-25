@@ -3,6 +3,21 @@ import image1 from '../images/1.png'
 import image2 from '../images/2.png'
 import image3 from '../images/3.png'
 import image4 from '../images/4.png'
+import l1 from '../images/css3.png'
+import l2 from '../images/ember.png'
+import l3 from '../images/git.png'
+import l4 from '../images/HTML_Logo.png'
+import l5 from '../images/java.png'
+import l6 from '../images/javascript.png'
+import l7 from '../images/jest.png'
+import l8 from '../images/Octocat.png'
+import l9 from '../images/react.png'
+import l10 from '../images/redux.png'
+import l11 from '../images/sass.png'
+import l12 from '../images/spring.png'
+import l13 from '../images/webpack.png'
+import l14 from '../images/jenkins.png'
+import l15 from '../images/docker.jpg'
 
 export default class Application extends Component{
   constructor(){
@@ -26,88 +41,94 @@ export default class Application extends Component{
   allTheCanvas() {
     let canvas = this.refs.canvas && this.refs.canvas
     let ctx = canvas.getContext('2d')
-    let particles = []
-    let patriclesNum = 350
+    let logosFactoryArray = []
+    let totalLogos = 52
     let w = window.innerWidth
     let h = window.innerHeight
-    let colors = ['#FA8C99','#f9eb97','#EDFA8C','#A6FA8C', '#8CF3FA', '#e2bbfd'];
+    let colors = ['#FA8C99','#f9eb97','#EDFA8C','#A6FA8C', '#8CF3FA', '#e2bbfd', '#994882', '#8f064c', '#c0d9d4', '#6d7eb4', '#0bc1aa', '#ff5139', '#9334fb', '#000000']
+    let logos = [l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l15]
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
 
-  function Factory(){
-    this.x =  Math.round( Math.random() * w);
-    this.y =  Math.round( Math.random() * h);
-    this.rad = Math.round( Math.random() * 1) + 1;
-    this.rgba = colors[ Math.round( Math.random() * 5) ];
-    this.vx = Math.round( Math.random() * 2.5) - 1.3;
-    this.vy = Math.round( Math.random() * 2.5) - 1.3;
-  }
+    function Factory(){
+      let randoNumber = Math.round( Math.random() * 14)
+      this.x =  w / 2
+      this.y =  h / 2
+      this.rgba = colors[ randoNumber ]
+      let randoImg = logos[ randoNumber ]
+      this.vx = Math.random() * 3 - 1.5
+      this.vy = Math.random() * 3 - 1.5
+      const img = new Image()
+      img.src = randoImg
+      this.img = img
+    }
 
-  function draw(){
-    ctx.clearRect(0, 0, w, h);
-    ctx.globalCompositeOperation = 'lighter';
-    for(var i = 0;i < patriclesNum; i++){
-      var dot = particles[i];
-      var factor = 1;
+    function draw(){
+      ctx.clearRect(0, 0, w, h)
+      ctx.globalCompositeOperation = 'source-over'
+      for(var i = 0; i < totalLogos; i++){
+        var logo = logosFactoryArray[i]
 
-      for(var j = 0; j<patriclesNum; j++){
+        for(var j = 0; j<totalLogos; j++){
 
-         var dot2 = particles[j];
-         ctx.linewidth = 0.5;
+           var logo2 = logosFactoryArray[j]
+           ctx.linewidth = 0.5
 
-         if(dot.rgba == dot2.rgba && calcDistance(dot, dot2)<100){
-            ctx.strokeStyle = dot.rgba;
-            ctx.beginPath();
-            ctx.moveTo(dot.x, dot.y);
-            ctx.lineTo(dot2.x, dot2.y);
-            ctx.stroke();
-            factor++;
-         }
+           if(logo.img.src == logo2.img.src && calcDistance(logo, logo2) < 200){
+              ctx.strokeStyle = logo.rgba
+              ctx.beginPath()
+              ctx.lineWidth = 1.5
+              ctx.moveTo(logo.x, logo.y)
+              ctx.lineTo(logo2.x, logo2.y)
+              ctx.stroke()
+           }
+        }
+
+        ctx.fillStyle = logo.rgba
+        ctx.strokeStyle = logo.rgba
+
+        const img = new Image()
+        img.src = logo.img
+
+        ctx.beginPath()
+        ctx.drawImage(logo.img, logo.x - 25, logo.y - 25, 50, 50)
+        ctx.fill()
+        ctx.closePath()
+
+        logo.x += logo.vx
+        logo.y += logo.vy
+
+        if(logo.x > w)logo.x = 0
+        if(logo.x < 0)logo.x = w
+        if(logo.y > h)logo.y = 0
+        if(logo.y < 0)logo.y = h
       }
+    }
 
+    function calcDistance(p1,p2) {
+      return Math.sqrt( Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2) )
+    }
 
-    ctx.fillStyle = dot.rgba;
-    ctx.strokeStyle = dot.rgba;
+    window.requestAnimFrame = (function(){
+      return  window.requestAnimationFrame       ||
+              window.webkitRequestAnimationFrame ||
+              window.mozRequestAnimationFrame    ||
+              function( callback ){
+                window.setTimeout(callback, 1000 / 60)
+              }
+    })();
 
-    ctx.beginPath();
-    ctx.arc(dot.x, dot.y, dot.rad*factor, 0, Math.PI*2, true);
-    ctx.fill();
-    ctx.closePath();
+    (function init(){
+      for(var i = 0; i < totalLogos; i++){
+        logosFactoryArray.push(new Factory)
+      }
+    })();
 
-    dot.x += dot.vx;
-    dot.y += dot.vy;
-
-    if(dot.x > w)dot.x = 0;
-    if(dot.x < 0)dot.x = w;
-    if(dot.y > h)dot.y = 0;
-    if(dot.y < 0)dot.y = h;
-  }
-}
-
-function calcDistance(p1,p2){
-  return Math.sqrt( Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2) );
-}
-
-window.requestAnimFrame = (function(){
-  return  window.requestAnimationFrame       ||
-          window.webkitRequestAnimationFrame ||
-          window.mozRequestAnimationFrame    ||
-          function( callback ){
-            window.setTimeout(callback, 1000 / 60);
-          };
-})();
-
-(function init(){
-  for(var i = 0; i < patriclesNum; i++){
-    particles.push(new Factory);
-  }
-})();
-
-(function loop(){
-  draw();
-  requestAnimFrame(loop);
-})();
+    (function loop(){
+      draw()
+      requestAnimFrame(loop)
+    })();
 
   }
 
@@ -119,12 +140,9 @@ window.requestAnimFrame = (function(){
             flexDirection: "column",
             display: "flex"}
     return(
-      <div style={styles}
-      >
+      <div style={styles}>
         <canvas ref='canvas'></canvas>
         <img src={require(`../images/${this.state.picture}.png`)}/>
-        {/* {this.allTheCanvas()} */}
-        <p>coming soon</p>
       </div>
     )
   }
