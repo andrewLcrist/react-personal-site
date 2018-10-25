@@ -8901,7 +8901,7 @@
 
 	__webpack_require__(511);
 
-	__webpack_require__(532);
+	__webpack_require__(517);
 
 	(0, _reactDom.render)(_react2.default.createElement(_Application2.default, null), document.getElementById('application'));
 
@@ -30970,22 +30970,7 @@
 		"./1.png": 512,
 		"./2.png": 513,
 		"./3.png": 514,
-		"./4.png": 515,
-		"./HTML_Logo.png": 517,
-		"./Octocat.png": 518,
-		"./css3.png": 519,
-		"./docker.png": 520,
-		"./ember.png": 521,
-		"./git.png": 522,
-		"./java.png": 523,
-		"./javascript.png": 524,
-		"./jenkins.png": 525,
-		"./jest.png": 526,
-		"./react.png": 527,
-		"./redux.png": 528,
-		"./sass.png": 529,
-		"./spring.png": 530,
-		"./webpack.png": 531
+		"./4.png": 515
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -31005,103 +30990,13 @@
 /* 517 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "6e6cd5f6d8490768fd0ea711826745f1.png";
-
-/***/ }),
-/* 518 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "97aed122fd0005ba74d2d4bf11f456f4.png";
-
-/***/ }),
-/* 519 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "2f325799d263c5dc224ab50fd88cb8ee.png";
-
-/***/ }),
-/* 520 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "1e9450c58529bb23cf2131170207183a.png";
-
-/***/ }),
-/* 521 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "c5bd919b8a0f11fa1c2238b5b8143bc8.png";
-
-/***/ }),
-/* 522 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "bf63dac1eb5f7c0500d83b5afd6bd179.png";
-
-/***/ }),
-/* 523 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "b10e6f4844066f058e5e59301f1f3e29.png";
-
-/***/ }),
-/* 524 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "e2390ad3e8f23c6057c30706f5be9061.png";
-
-/***/ }),
-/* 525 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "592f10b859632fe731a715b5a87e3e51.png";
-
-/***/ }),
-/* 526 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "781ab2c1374eebe7da19dfb59dcb214f.png";
-
-/***/ }),
-/* 527 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "a409581b37af7f8b69cdcf0c0b29e4a0.png";
-
-/***/ }),
-/* 528 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "6ad62788fd868d384a9c3fd2a24f8a91.png";
-
-/***/ }),
-/* 529 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "beed3b9c2f8527cf17000649c1d30759.png";
-
-/***/ }),
-/* 530 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "7559b9fe5992031fb4712210ee8eb32b.png";
-
-/***/ }),
-/* 531 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "9232e1aa55d4d12d66c30faa67ff271c.png";
-
-/***/ }),
-/* 532 */
-/***/ (function(module, exports, __webpack_require__) {
-
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(533);
+	var content = __webpack_require__(518);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(535)(content, {});
+	var update = __webpack_require__(520)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -31118,10 +31013,10 @@
 	}
 
 /***/ }),
-/* 533 */
+/* 518 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(534)(false);
+	exports = module.exports = __webpack_require__(519)(false);
 	// imports
 
 
@@ -31132,7 +31027,7 @@
 
 
 /***/ }),
-/* 534 */
+/* 519 */
 /***/ (function(module, exports) {
 
 	/*
@@ -31214,7 +31109,7 @@
 
 
 /***/ }),
-/* 535 */
+/* 520 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
