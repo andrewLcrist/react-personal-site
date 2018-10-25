@@ -8901,6 +8901,8 @@
 
 	__webpack_require__(511);
 
+	__webpack_require__(532);
+
 	(0, _reactDom.render)(_react2.default.createElement(_Application2.default, null), document.getElementById('application'));
 
 /***/ }),
@@ -30832,11 +30834,96 @@
 	      setInterval(function () {
 	        return _this2.changePicture();
 	      }, 1000);
+	      this.allTheCanvas();
 	    }
 	  }, {
 	    key: 'changePicture',
 	    value: function changePicture() {
 	      this.state.picture === 4 ? this.setState({ picture: 1 }) : this.setState({ picture: this.state.picture + 1 });
+	    }
+	  }, {
+	    key: 'allTheCanvas',
+	    value: function allTheCanvas() {
+	      var canvas = this.refs.canvas && this.refs.canvas;
+	      var ctx = canvas.getContext('2d');
+	      var logosFactoryArray = [];
+	      var w = window.innerWidth;
+	      var h = window.innerHeight;
+	      var totalLogos = Math.round(w * h / 1800);
+	      var colors = ['#FA8C99', '#f9eb97', '#EDFA8C', '#A6FA8C', '#8CF3FA', '#e2bbfd', '#994882', '#8f064c', '#c0d9d4', '#6d7eb4', '#0bc1aa', '#ff5139', '#9334fb', '#000000'];
+
+	      canvas.width = window.innerWidth;
+	      canvas.height = window.innerHeight;
+
+	      function Factory() {
+	        var randoNumber = Math.round(Math.random() * 14);
+	        this.x = w / 2;
+	        this.y = h / 2;
+	        this.rgba = colors[randoNumber];
+	        this.vx = Math.random() * 3 - 1.5;
+	        this.vy = Math.random() * 3 - 1.5;
+	      }
+
+	      function draw() {
+	        ctx.clearRect(0, 0, w, h);
+	        ctx.globalCompositeOperation = 'source-over';
+	        for (var i = 0; i < totalLogos; i++) {
+	          var logo = logosFactoryArray[i];
+
+	          for (var j = 0; j < totalLogos; j++) {
+
+	            var logo2 = logosFactoryArray[j];
+	            ctx.linewidth = 0.5;
+
+	            if (logo.rgba == logo2.rgba && calcDistance(logo, logo2) < 200) {
+	              ctx.strokeStyle = logo.rgba;
+	              ctx.beginPath();
+	              ctx.lineWidth = 1.5;
+	              ctx.moveTo(logo.x, logo.y);
+	              ctx.lineTo(logo2.x, logo2.y);
+	              ctx.stroke();
+	            }
+	          }
+
+	          ctx.fillStyle = logo.rgba;
+	          ctx.strokeStyle = logo.rgba;
+
+	          // const img = new Image()
+
+	          ctx.beginPath();
+	          ctx.fill();
+	          ctx.closePath();
+
+	          logo.x += logo.vx;
+	          logo.y += logo.vy;
+
+	          if (logo.x > w) logo.x = 0;
+	          if (logo.x < 0) logo.x = w;
+	          if (logo.y > h) logo.y = 0;
+	          if (logo.y < 0) logo.y = h;
+	        }
+	      }
+
+	      function calcDistance(p1, p2) {
+	        return Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
+	      }
+
+	      window.requestAnimFrame = function () {
+	        return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function (callback) {
+	          window.setTimeout(callback, 1000 / 60);
+	        };
+	      }();
+
+	      (function init() {
+	        for (var i = 0; i < totalLogos; i++) {
+	          logosFactoryArray.push(new Factory());
+	        }
+	      })();
+
+	      (function loop() {
+	        draw();
+	        requestAnimFrame(loop);
+	      })();
 	    }
 	  }, {
 	    key: 'render',
@@ -30849,14 +30936,9 @@
 	        display: "flex" };
 	      return _react2.default.createElement(
 	        'div',
-	        { style: styles
-	        },
-	        _react2.default.createElement('img', { src: __webpack_require__(516)("./" + this.state.picture + '.jpg') }),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'coming soon'
-	        )
+	        { style: styles },
+	        _react2.default.createElement('canvas', { ref: 'canvas' }),
+	        _react2.default.createElement('img', { src: __webpack_require__(516)("./" + this.state.picture + '.png') })
 	      );
 	    }
 	  }]);
@@ -30870,35 +30952,50 @@
 /* 512 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "756414ba64f72afa56eaabf14a8a2268.jpg";
+	module.exports = __webpack_require__.p + "a7ecc2f240cd1b74f71b1715a6363675.png";
 
 /***/ }),
 /* 513 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "9be82926b4d65dff3bbc241b7587eb32.jpg";
+	module.exports = __webpack_require__.p + "21ee0ae6c142db0d85b73f7cd6848b46.png";
 
 /***/ }),
 /* 514 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "253c1bb099577a1bc55e3906f8740cb9.jpg";
+	module.exports = __webpack_require__.p + "63169ce2df7427e66489b8f02f8116a1.png";
 
 /***/ }),
 /* 515 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "4b4e736c2626700692cc87c9473a0eb1.jpg";
+	module.exports = __webpack_require__.p + "50e46bf6e771efd84dd56700ce07e9ee.png";
 
 /***/ }),
 /* 516 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./1.jpg": 512,
-		"./2.jpg": 513,
-		"./3.jpg": 514,
-		"./4.jpg": 515
+		"./1.png": 512,
+		"./2.png": 513,
+		"./3.png": 514,
+		"./4.png": 515,
+		"./HTML_Logo.png": 517,
+		"./Octocat.png": 518,
+		"./css3.png": 519,
+		"./docker.png": 520,
+		"./ember.png": 521,
+		"./git.png": 522,
+		"./java.png": 523,
+		"./javascript.png": 524,
+		"./jenkins.png": 525,
+		"./jest.png": 526,
+		"./react.png": 527,
+		"./redux.png": 528,
+		"./sass.png": 529,
+		"./spring.png": 530,
+		"./webpack.png": 531
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -30912,6 +31009,470 @@
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
 	webpackContext.id = 516;
+
+
+/***/ }),
+/* 517 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "6e6cd5f6d8490768fd0ea711826745f1.png";
+
+/***/ }),
+/* 518 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "97aed122fd0005ba74d2d4bf11f456f4.png";
+
+/***/ }),
+/* 519 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "2f325799d263c5dc224ab50fd88cb8ee.png";
+
+/***/ }),
+/* 520 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "1e9450c58529bb23cf2131170207183a.png";
+
+/***/ }),
+/* 521 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "c5bd919b8a0f11fa1c2238b5b8143bc8.png";
+
+/***/ }),
+/* 522 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "bf63dac1eb5f7c0500d83b5afd6bd179.png";
+
+/***/ }),
+/* 523 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "b10e6f4844066f058e5e59301f1f3e29.png";
+
+/***/ }),
+/* 524 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "e2390ad3e8f23c6057c30706f5be9061.png";
+
+/***/ }),
+/* 525 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "592f10b859632fe731a715b5a87e3e51.png";
+
+/***/ }),
+/* 526 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "781ab2c1374eebe7da19dfb59dcb214f.png";
+
+/***/ }),
+/* 527 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "a409581b37af7f8b69cdcf0c0b29e4a0.png";
+
+/***/ }),
+/* 528 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "6ad62788fd868d384a9c3fd2a24f8a91.png";
+
+/***/ }),
+/* 529 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "beed3b9c2f8527cf17000649c1d30759.png";
+
+/***/ }),
+/* 530 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "7559b9fe5992031fb4712210ee8eb32b.png";
+
+/***/ }),
+/* 531 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "9232e1aa55d4d12d66c30faa67ff271c.png";
+
+/***/ }),
+/* 532 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(533);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(535)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../node_modules/css-loader/index.js!./styles.css", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js!./styles.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ }),
+/* 533 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(534)(false);
+	// imports
+
+
+	// module
+	exports.push([module.id, "html {\n  overflow: hidden;\n}\n\ncanvas {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  width: 100vw;\n  height: 100vh;\n  z-index: -1;\n  background-color: white;\n}\n/* \nimg {\n  opacity: .5;\n} */\n", ""]);
+
+	// exports
+
+
+/***/ }),
+/* 534 */
+/***/ (function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function(useSourceMap) {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			return this.map(function (item) {
+				var content = cssWithMappingToString(item, useSourceMap);
+				if(item[2]) {
+					return "@media " + item[2] + "{" + content + "}";
+				} else {
+					return content;
+				}
+			}).join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+	function cssWithMappingToString(item, useSourceMap) {
+		var content = item[1] || '';
+		var cssMapping = item[3];
+		if (!cssMapping) {
+			return content;
+		}
+
+		if (useSourceMap && typeof btoa === 'function') {
+			var sourceMapping = toComment(cssMapping);
+			var sourceURLs = cssMapping.sources.map(function (source) {
+				return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+			});
+
+			return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+		}
+
+		return [content].join('\n');
+	}
+
+	// Adapted from convert-source-map (MIT)
+	function toComment(sourceMap) {
+		// eslint-disable-next-line no-undef
+		var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+		var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+		return '/*# ' + data + ' */';
+	}
+
+
+/***/ }),
+/* 535 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(self.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		linkElement.rel = "stylesheet";
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+
+		update(obj);
+
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+
+	var replaceText = (function () {
+		var textStore = [];
+
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var sourceMap = obj.sourceMap;
+
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+
+		var blob = new Blob([css], { type: "text/css" });
+
+		var oldSrc = linkElement.href;
+
+		linkElement.href = URL.createObjectURL(blob);
+
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
 
 
 /***/ })
