@@ -13,7 +13,12 @@ canvas {
   z-index: -1;
   background-color: white;
 }
-/* 
-img {
-  opacity: .5;
-} */
+
+#container {
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+}

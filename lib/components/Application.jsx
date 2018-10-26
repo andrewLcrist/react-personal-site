@@ -67,10 +67,10 @@ export default class Application extends Component{
         logo.x += logo.vx
         logo.y += logo.vy
 
-        if(logo.x > w)logo.x = 0
-        if(logo.x < 0)logo.x = w
-        if(logo.y > h)logo.y = 0
-        if(logo.y < 0)logo.y = h
+        if(logo.x > w - 1)logosFactoryArray[i].vx = -logo.vx
+        if(logo.x < 1) logosFactoryArray[i].vx = -logo.vx
+        if(logo.y > h - 1)logosFactoryArray[i].vy = -logo.vy
+        if(logo.y < 1)logosFactoryArray[i].vy = -logo.vy
       }
     }
 
@@ -101,14 +101,8 @@ export default class Application extends Component{
   }
 
   render() {
-    let styles = {width: "100vw",
-            height: "100vh",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-            display: "flex"}
     return(
-      <div style={styles}>
+      <div id="container">
         <canvas ref='canvas'></canvas>
         <img src={require(`../images/${this.state.picture}.png`)}/>
       </div>
