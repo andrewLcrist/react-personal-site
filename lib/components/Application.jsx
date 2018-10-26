@@ -39,7 +39,7 @@ export default class Application extends Component{
       let randoNumber = Math.round( Math.random() * 14)
       this.x =  w / 2
       this.y =  h / 2
-      this.rgba = colors[ randoNumber ]
+      this.color = colors[ randoNumber ]
       this.vx = Math.random() * 3 - 1.5
       this.vy = Math.random() * 3 - 1.5
     }
@@ -54,8 +54,8 @@ export default class Application extends Component{
 
            var logo2 = logosFactoryArray[j]
 
-           if(logo.rgba == logo2.rgba && calcDistance(logo, logo2) < 200){
-              ctx.strokeStyle = logo.rgba
+           if(logo.color == logo2.color && calcDistance(logo, logo2) < 200){
+              ctx.strokeStyle = logo.color
               ctx.beginPath()
               ctx.lineWidth = 1.5
               ctx.moveTo(logo.x, logo.y)
