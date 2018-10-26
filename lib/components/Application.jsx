@@ -29,7 +29,7 @@ export default class Application extends Component{
     let logosFactoryArray = []
     let w = window.innerWidth
     let h = window.innerHeight
-    let totalLogos = 1
+    let totalLogos = 50
     let colors = ['#FA8C99','#f9eb97','#EDFA8C','#A6FA8C', '#8CF3FA', '#e2bbfd', '#994882', '#8f064c', '#c0d9d4', '#6d7eb4', '#0bc1aa', '#ff5139', '#9334fb', '#000000']
 
     canvas.width = window.innerWidth
@@ -39,7 +39,7 @@ export default class Application extends Component{
       let randoNumber = Math.round( Math.random() * 14)
       this.x =  w / 2
       this.y =  h / 2
-      this.rgba = colors[ randoNumber ]
+      this.color = colors[ randoNumber ]
       this.vx = Math.random() * 3 - 1.5
       this.vy = Math.random() * 3 - 1.5
     }
@@ -54,8 +54,8 @@ export default class Application extends Component{
         //
         //    var logo2 = logosFactoryArray[j]
         //
-        //    if(logo.rgba == logo.rgba && calcDistance(logo, logo2) < 200){
-        //       ctx.strokeStyle = logo.rgba
+        //    if(logo.color == logo.color && calcDistance(logo, logo2) < 200){
+        //       ctx.strokeStyle = logo.color
         //       ctx.beginPath()
         //       ctx.lineWidth = 1.5
         //       ctx.moveTo(logo.x, logo.y)
@@ -65,10 +65,11 @@ export default class Application extends Component{
         // }
 
         ctx.beginPath();
-        ctx.strokeStyle="purple"; // Purple path
-        ctx.arc(logo.x,logo.y,50,0,2*Math.PI)
-        ctx.stroke(); // Draw it
-
+        ctx.strokeStyle = logo.color
+        ctx.arc(logo.x,logo.y, 50, 0, 2*Math.PI)
+        ctx.fillStyle = logo.color
+        ctx.fill()
+        ctx.stroke();
 
         manageDirection(logo, i)
         // logo.x += logo.vx
@@ -82,11 +83,13 @@ export default class Application extends Component{
     }
 
     function manageDirection(logo, i) {
-      console.log(logosFactoryArray[i])
+      logo.x += logo.vx
       logo.y += logo.vy
-      if(logo.y + 26 > h)logosFactoryArray[i].vy = -logo.vy
-      if(logo.y + 26 < 0)logosFactoryArray[i].vy = -logo.vy
-      console.log(logo.vy)
+      if(logo.y + 50 > h - 1)logosFactoryArray[i].vy = -logo.vy
+      if(logo.y - 50 < 1)logosFactoryArray[i].vy = -logo.vy
+      if(logo.x - 50 < 1)logosFactoryArray[i].vx = -logo.vx
+      if(logo.x + 50 > w - 1)logosFactoryArray[i].vx = -logo.vx
+
 
     }
 
