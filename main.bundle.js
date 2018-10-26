@@ -30887,10 +30887,10 @@
 	          logo.x += logo.vx;
 	          logo.y += logo.vy;
 
-	          if (logo.x > w) logo.x = 0;
-	          if (logo.x < 0) logo.x = w;
-	          if (logo.y > h) logo.y = 0;
-	          if (logo.y < 0) logo.y = h;
+	          if (logo.x > w - 1) logosFactoryArray[i].vx = -logo.vx;
+	          if (logo.x < 1) logosFactoryArray[i].vx = -logo.vx;
+	          if (logo.y > h - 1) logosFactoryArray[i].vy = -logo.vy;
+	          if (logo.y < 1) logosFactoryArray[i].vy = -logo.vy;
 	        }
 	      }
 
@@ -30918,15 +30918,9 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var styles = { width: "100vw",
-	        height: "100vh",
-	        justifyContent: "center",
-	        alignItems: "center",
-	        flexDirection: "column",
-	        display: "flex" };
 	      return _react2.default.createElement(
 	        'div',
-	        { style: styles },
+	        { id: 'container' },
 	        _react2.default.createElement('canvas', { ref: 'canvas' }),
 	        _react2.default.createElement('img', { src: __webpack_require__(516)("./" + this.state.picture + '.png') })
 	      );
@@ -31021,7 +31015,7 @@
 
 
 	// module
-	exports.push([module.id, "html {\n  overflow: hidden;\n}\n\ncanvas {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  width: 100vw;\n  height: 100vh;\n  z-index: -1;\n  background-color: white;\n}\n/* \nimg {\n  opacity: .5;\n} */\n", ""]);
+	exports.push([module.id, "html {\n  overflow: hidden;\n}\n\ncanvas {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  width: 100vw;\n  height: 100vh;\n  z-index: -1;\n  background-color: white;\n}\n\n#container {\n  width: 100vw;\n  height: 100vh;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  display: flex;\n}\n", ""]);
 
 	// exports
 
