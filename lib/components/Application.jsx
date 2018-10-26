@@ -29,7 +29,9 @@ export default class Application extends Component{
     let logosFactoryArray = []
     let w = window.innerWidth
     let h = window.innerHeight
-    let totalLogos = 50
+    let totalLogos = 45
+    let smallestView = w > h ? h : w
+    let radius = 75
     let colors = ['#FA8C99','#f9eb97','#EDFA8C','#A6FA8C', '#8CF3FA', '#e2bbfd', '#994882', '#8f064c', '#c0d9d4', '#6d7eb4', '#0bc1aa', '#ff5139', '#9334fb', '#000000']
 
     canvas.width = window.innerWidth
@@ -39,56 +41,48 @@ export default class Application extends Component{
       let randoNumber = Math.round( Math.random() * 14)
       this.x =  w / 2
       this.y =  h / 2
-      this.color = colors[ randoNumber ]
-      this.vx = Math.random() * 3 - 1.5
-      this.vy = Math.random() * 3 - 1.5
+      // this.color = colors[ randoNumber ]
+      this.color = "white"
+      this.vx = Math.random() * 15 - 7.5
+      this.vy = Math.random() * 10 - 5
     }
 
-    function draw(){
+    function drawShapes(){
       ctx.clearRect(0, 0, w, h)
-      ctx.globalCompositeOperation = 'source-over'
+      ctx.globalCompositeOperation = 'xor'
       for(var i = 0; i < totalLogos; i++){
         var logo = logosFactoryArray[i]
 
-        // for(var j = 0; j<totalLogos; j++){
-        //
-        //    var logo2 = logosFactoryArray[j]
-        //
-        //    if(logo.color == logo.color && calcDistance(logo, logo2) < 200){
-        //       ctx.strokeStyle = logo.color
-        //       ctx.beginPath()
-        //       ctx.lineWidth = 1.5
-        //       ctx.moveTo(logo.x, logo.y)
-        //       ctx.lineTo(logo2.x, logo2.y)
-        //       ctx.stroke()
-        //    }
-        // }
-
         ctx.beginPath();
         ctx.strokeStyle = logo.color
-        ctx.arc(logo.x,logo.y, 50, 0, 2*Math.PI)
+        ctx.arc(logo.x,logo.y, radius, 0, 2*Math.PI)
         ctx.fillStyle = logo.color
         ctx.fill()
         ctx.stroke();
 
         manageDirection(logo, i)
-        // logo.x += logo.vx
-        // logo.y += logo.vy
-
-        // if(logo.y + 26 === h)logo.x += logo.vy
-        // if(logo.x < 0)logo.x = w
-        // if(logo.y > h)logo.y = 0
-        // if(logo.y < 0)logo.y = h
       }
     }
+
+    function drawAndrew() {
+      ctx.font = `${w / 6}px Arial`
+      ctx.fillStyle = "black"
+      ctx.fillText("A N D R E W", 10, (h / 2) - 45);
+    }
+
+    // function drawCrist() {
+    //   ctx.font = `${w / 6}px Arial`
+    //   ctx.fillStyle = "black"
+    //   ctx.fillText("C R I S T", 10, (h / 2) - 45);
+    // }
 
     function manageDirection(logo, i) {
       logo.x += logo.vx
       logo.y += logo.vy
-      if(logo.y + 50 > h - 1)logosFactoryArray[i].vy = -logo.vy
-      if(logo.y - 50 < 1)logosFactoryArray[i].vy = -logo.vy
-      if(logo.x - 50 < 1)logosFactoryArray[i].vx = -logo.vx
-      if(logo.x + 50 > w - 1)logosFactoryArray[i].vx = -logo.vx
+      if(logo.y + radius > h - 1)logosFactoryArray[i].vy = -logo.vy
+      if(logo.y - radius < 1)logosFactoryArray[i].vy = -logo.vy
+      if(logo.x - radius < 1)logosFactoryArray[i].vx = -logo.vx
+      if(logo.x + radius > w - 1)logosFactoryArray[i].vx = -logo.vx
 
 
     }
@@ -113,7 +107,9 @@ export default class Application extends Component{
     })();
 
     (function loop(){
-      draw()
+      drawShapes()
+      drawAndrew()
+      // drawCrist()
       requestAnimFrame(loop)
     })();
 
