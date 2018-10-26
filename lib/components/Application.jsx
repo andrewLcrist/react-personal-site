@@ -29,7 +29,7 @@ export default class Application extends Component{
     let logosFactoryArray = []
     let w = window.innerWidth
     let h = window.innerHeight
-    let totalLogos = Math.round((w * h) / 1800)
+    let totalLogos = 1
     let colors = ['#FA8C99','#f9eb97','#EDFA8C','#A6FA8C', '#8CF3FA', '#e2bbfd', '#994882', '#8f064c', '#c0d9d4', '#6d7eb4', '#0bc1aa', '#ff5139', '#9334fb', '#000000']
 
     canvas.width = window.innerWidth
@@ -50,28 +50,44 @@ export default class Application extends Component{
       for(var i = 0; i < totalLogos; i++){
         var logo = logosFactoryArray[i]
 
-        for(var j = 0; j<totalLogos; j++){
+        // for(var j = 0; j<totalLogos; j++){
+        //
+        //    var logo2 = logosFactoryArray[j]
+        //
+        //    if(logo.rgba == logo.rgba && calcDistance(logo, logo2) < 200){
+        //       ctx.strokeStyle = logo.rgba
+        //       ctx.beginPath()
+        //       ctx.lineWidth = 1.5
+        //       ctx.moveTo(logo.x, logo.y)
+        //       ctx.lineTo(logo2.x, logo2.y)
+        //       ctx.stroke()
+        //    }
+        // }
 
-           var logo2 = logosFactoryArray[j]
+        ctx.beginPath();
+        ctx.strokeStyle="purple"; // Purple path
+        ctx.arc(logo.x,logo.y,50,0,2*Math.PI)
+        ctx.stroke(); // Draw it
 
-           if(logo.rgba == logo2.rgba && calcDistance(logo, logo2) < 200){
-              ctx.strokeStyle = logo.rgba
-              ctx.beginPath()
-              ctx.lineWidth = 1.5
-              ctx.moveTo(logo.x, logo.y)
-              ctx.lineTo(logo2.x, logo2.y)
-              ctx.stroke()
-           }
-        }
 
-        logo.x += logo.vx
-        logo.y += logo.vy
+        manageDirection(logo, i)
+        // logo.x += logo.vx
+        // logo.y += logo.vy
 
-        if(logo.x > w)logo.x = 0
-        if(logo.x < 0)logo.x = w
-        if(logo.y > h)logo.y = 0
-        if(logo.y < 0)logo.y = h
+        // if(logo.y + 26 === h)logo.x += logo.vy
+        // if(logo.x < 0)logo.x = w
+        // if(logo.y > h)logo.y = 0
+        // if(logo.y < 0)logo.y = h
       }
+    }
+
+    function manageDirection(logo, i) {
+      console.log(logosFactoryArray[i])
+      logo.y += logo.vy
+      if(logo.y + 26 > h)logosFactoryArray[i].vy = -logo.vy
+      if(logo.y + 26 < 0)logosFactoryArray[i].vy = -logo.vy
+      console.log(logo.vy)
+
     }
 
     function calcDistance(p1,p2) {
