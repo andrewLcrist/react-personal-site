@@ -16,6 +16,7 @@ export default class Lines extends Component{
     setInterval(() => this.changePicture(), 1000)
     this.allTheCanvas()
     this.refs.container2 && console.log(this.refs.container2.styles)
+    window.addEventListener('scroll', this.backgroundScroll)
   }
 
   changePicture() {
@@ -30,7 +31,7 @@ export default class Lines extends Component{
     let logosFactoryArray = []
     let w = window.innerWidth
     let h = window.innerHeight
-    let totalLogos = 50
+    let totalLogos = 300
     let colors = ['#FA8C99','#f9eb97','#EDFA8C','#A6FA8C', '#8CF3FA', '#e2bbfd', '#994882', '#8f064c', '#c0d9d4', '#6d7eb4', '#0bc1aa', '#ff5139', '#9334fb', '#000000']
 
     canvas.width = window.innerWidth
@@ -98,6 +99,18 @@ export default class Lines extends Component{
       draw()
       requestAnimFrame(loop)
     })();
+  }
+
+  backgroundScroll(e) {
+   var someDiv = document.getElementById('container2');
+   var distanceToTop = someDiv.getBoundingClientRect().top;
+
+   let opacity = 1 - (distanceToTop / window.innerHeight)
+
+   console.log(someDiv.style.backgroundColor);
+   console.log('opacity', opacity);
+
+   someDiv.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`
   }
 
 
