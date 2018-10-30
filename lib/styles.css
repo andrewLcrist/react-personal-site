@@ -1,19 +1,61 @@
 html {
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 canvas {
-  position: fixed;
+  width: 100%;
+  height: 100%;
+  /* position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -1;
-  background-color: white;
+  z-index: -1; */
+  /* background-color: black; */
 }
-/* 
-img {
-  opacity: .5;
+
+/* .scrollContainer.one {
+  background-image: url('https://s3.amazonaws.com/amacobrent/spree/products/attachments/6171/product/tp20-sky-blue-square-2048px.jpg?1419289011');
+}
+
+.scrollContainer.two {
+  background-image: url('https://images.fabric.com/images/400/400/0348615.jpg');
 } */
+
+
+#container1 {
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  position: fixed;
+}
+
+#bitmoji {
+  position: absolute;
+}
+
+#container2 {
+  background-color: rgba(255,255,255,0);
+  width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    position: absolute;
+    top: 100vh;
+}
+
+.scrollContainer {
+  height: 800px;
+  position: relative;
+  background-attachment: fixed;
+  background-size: 1000px 800px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
