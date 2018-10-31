@@ -8,8 +8,8 @@
   },
   "homepage": "http://andrewlcrist.github.io/react-personal-site",
   "scripts": {
-    "start": "webpack-dev-server --devtool --inline --hot --port 3000",
-    "build": "webpack",
+    "start": "webpack-dev-server --open --hot --mode development",
+    "build": "webpack --mode production",
     "test": "mocha --compilers js:babel-register --require test/helpers/setup.js --recursive",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d public"
@@ -21,29 +21,26 @@
   "author": "Andrew Crist",
   "license": "MIT",
   "devDependencies": {
-    "babel": "^6.5.2",
-    "babel-core": "^6.14.0",
-    "babel-eslint": "^6.1.2",
-    "babel-jest": "^18.0.0",
-    "babel-loader": "^6.2.5",
-    "babel-polyfill": "^6.13.0",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-react": "^6.16.0",
-    "babel-register": "^6.14.0",
-    "css-loader": "^0.28.11",
+    "@babel/core": "^7.1.2",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^8.0.4",
+    "babel-preset-react-app": "^3.1.2",
+    "css-loader": "^1.0.1",
     "file-loader": "^2.0.0",
-    "jest": "^18.1.0",
-    "node-sass": "^3.10.0",
-    "react-dom": "^15.4.2",
-    "sass-loader": "^4.0.2",
-    "style-loader": "^0.13.2",
-    "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.15.2"
+    "image-webpack-loader": "^4.4.0",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10",
+    "style-loader": "^0.23.1"
   },
-  "dependencies": {
-    "babel-jest": "^18.0.0",
-    "babel-polyfill": "^6.20.0",
-    "es6-promise": "^4.1.0",
-    "react": "^15.3.1"
-  }
+  "dependencies": {},
+  "bugs": {
+    "url": "https://github.com/andrewLcrist/personal-site/issues"
+  },
+  "keywords": []
 }
