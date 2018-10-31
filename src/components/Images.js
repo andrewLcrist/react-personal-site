@@ -42,7 +42,7 @@ export default class Images extends Component{
     let canvas = this.refs.canvas2 && this.refs.canvas2
     let ctx = canvas.getContext('2d')
     let logosFactoryArray = []
-    let totalLogos = 70
+    let totalLogos = 90
     let w = window.innerWidth
     let h = window.innerHeight
 
