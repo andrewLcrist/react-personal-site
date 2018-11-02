@@ -1,9 +1,16 @@
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from "react-redux"
+import store from './redux/store'
 require ('./components/Application')
 
-import { render } from 'react-dom'
-import React from 'react'
 
 import Application from './components/Application'
 require('./styles.css')
 
-render(<Application />, document.getElementById('application'))
+render(
+  <Provider store={store}>
+    <Application />
+  </Provider>,
+  document.getElementById('application')
+)

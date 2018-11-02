@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import image1 from '../images/1.png'
 import image2 from '../images/2.png'
 import image3 from '../images/3.png'
@@ -19,7 +20,7 @@ import l13 from '../images/webpack.png'
 import l14 from '../images/jenkins.png'
 import l15 from '../images/docker.jpg'
 
-export default class Images extends Component{
+export class Images extends Component{
   constructor(){
     super()
     this.state = {
@@ -136,7 +137,7 @@ export default class Images extends Component{
 
     if(container2DistanceToTop < container1DistanceToTop) this.setState({loop: false})
 
-    
+
   }
 
   render() {
@@ -148,3 +149,9 @@ export default class Images extends Component{
     )
   }
 }
+
+const mapState = () => ({
+
+})
+
+export default connect(mapState)(Images)
