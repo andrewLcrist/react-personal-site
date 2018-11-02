@@ -33,12 +33,16 @@
     "image-webpack-loader": "^4.4.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+    "redux-devtools": "^3.4.1",
+    "style-loader": "^0.23.1",
     "webpack": "^4.23.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10",
-    "style-loader": "^0.23.1"
+    "webpack-dev-server": "^3.1.10"
   },
-  "dependencies": {},
+  "dependencies": {
+    "react-redux": "^5.1.0",
+    "redux": "^4.0.1"
+  },
   "bugs": {
     "url": "https://github.com/andrewLcrist/personal-site/issues"
   },

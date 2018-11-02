@@ -23,19 +23,23 @@ export default class Images extends Component{
   constructor(){
     super()
     this.state = {
-      picture: 1
+      picture: 1,
+      loop: true
     }
+    this.checkForAnimationStatus = this.checkForAnimationStatus.bind(this)
   }
 
   componentDidMount() {
     setInterval(() => this.changePicture(), 1000)
     this.allTheCanvas()
+    window.addEventListener('scroll', this.checkForAnimationStatus)
   }
 
   changePicture() {
+    this.state.loop &&(
     this.state.picture === 4 ?
       this.setState({picture: 1})
-      : this.setState({picture: this.state.picture + 1})
+      : this.setState({picture: this.state.picture + 1}))
   }
 
   allTheCanvas() {
@@ -108,9 +112,7 @@ export default class Images extends Component{
       return  window.requestAnimationFrame       ||
               window.webkitRequestAnimationFrame ||
               window.mozRequestAnimationFrame    ||
-              function( callback ){
-                window.setTimeout(callback, 1000 / 60)
-              }
+              loop()
     })();
 
     (function init(){
@@ -119,11 +121,22 @@ export default class Images extends Component{
       }
     })();
 
-    (function loop(){
+    this.state.loop && (function loop(){
       draw()
       requestAnimFrame(loop)
     })();
 
+  }
+
+  checkForAnimationStatus() {
+    var container1 = document.getElementById('container1');
+    var container2 = document.getElementById('container2');
+    var container1DistanceToTop = container1.getBoundingClientRect().top + (window.innerHeight/5);
+    var container2DistanceToTop = container2.getBoundingClientRect().top;
+
+    if(container2DistanceToTop < container1DistanceToTop) this.setState({loop: false})
+
+    
   }
 
   render() {

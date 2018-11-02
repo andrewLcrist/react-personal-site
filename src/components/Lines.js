@@ -101,12 +101,12 @@ export default class Lines extends Component{
   }
 
   backgroundScroll(e) {
-   var someDiv = document.getElementById('container2');
-   var distanceToTop = someDiv.getBoundingClientRect().top;
+   var container2 = document.getElementById('container2');
+   var distanceToTop = container2.getBoundingClientRect().top;
 
    let opacity = 1 - (distanceToTop / window.innerHeight)
 
-   someDiv.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`
+   container2.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`
   }
 
   render() {
