@@ -6,8 +6,7 @@ export default class Application extends Component{
   render() {
     return(
       <div id="parent">
-        <Images >
-        </Images>
+        <Images />
         <Lines />
       </div>
     )
