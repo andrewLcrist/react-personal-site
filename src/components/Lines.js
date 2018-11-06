@@ -15,7 +15,6 @@ export default class Lines extends Component{
   componentDidMount() {
     setInterval(() => this.changePicture(), 1000)
     this.allTheCanvas()
-    this.refs.container2 && console.log(this.refs.container2.styles)
     window.addEventListener('scroll', this.backgroundScroll)
   }
 
@@ -102,15 +101,10 @@ export default class Lines extends Component{
   }
 
   backgroundScroll(e) {
-   var someDiv = document.getElementById('container2');
-   var distanceToTop = someDiv.getBoundingClientRect().top;
-
+   var container2 = document.getElementById('container2');
+   var distanceToTop = container2.getBoundingClientRect().top;
    let opacity = 1 - (distanceToTop / window.innerHeight)
-
-   console.log(someDiv.style.backgroundColor);
-   console.log('opacity', opacity);
-
-   someDiv.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`
+   container2.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`
   }
 
 

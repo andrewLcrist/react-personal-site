@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import Images from './Images'
+import WelcomePane from './WelcomePane'
 import Lines from './Lines'
 
 export default class Application extends Component{
   render() {
     return(
       <div id="parent">
-        <Images />
+        <WelcomePane />
         <Lines />
       </div>
     )
