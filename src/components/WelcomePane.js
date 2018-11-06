@@ -8,7 +8,8 @@ export default class WelcomePane extends Component{
   constructor(){
     super()
     this.state = {
-      picture: 1
+      picture: 1,
+      loop: true
     }
   }
 
@@ -17,19 +18,20 @@ export default class WelcomePane extends Component{
     window.addEventListener('scroll', this.checkForAnimationStatus)
   }
 
-  changePicture() {
-    this.state.picture === 4 ?
+  changePicture = () => {
+    this.state.loop && (this.state.picture === 4 ?
       this.setState({picture: 1})
-      : this.setState({picture: this.state.picture + 1})
+      : this.setState({picture: this.state.picture + 1}))
   }
 
-  checkForAnimationStatus() {
+  checkForAnimationStatus = () => {
     var container1 = document.getElementById('container1');
     var container2 = document.getElementById('container2');
     var container1DistanceToTop = container1.getBoundingClientRect().top + (window.innerHeight/5);
     var container2DistanceToTop = container2.getBoundingClientRect().top;
 
     if(container2DistanceToTop < container1DistanceToTop) this.setState({loop: false})
+    if(container2DistanceToTop > container1DistanceToTop) this.setState({loop: true})
   }
 
   render() {
