@@ -31,18 +31,34 @@ export default class WelcomePane extends Component{
   }
 
   checkForAnimationStatus = () => {
-    let container1 = document.getElementById('container1');
-    let container2 = document.getElementById('fadePane');
-    let container1DistanceToTop = container1.getBoundingClientRect().top + (window.innerHeight/5);
-    let container2DistanceToTop = container2.getBoundingClientRect().top
+    let welcomePaneContainer = document.getElementById('welcomePaneContainer');
+    let aboutMeContainer = document.getElementById('aboutMeContainer');
+    let container1DistanceToTop = welcomePaneContainer.getBoundingClientRect().top + (window.innerHeight/5);
+    let container2DistanceToTop = aboutMeContainer.getBoundingClientRect().top
 
     if(container2DistanceToTop < container1DistanceToTop) this.setState({loop: false})
     if(container2DistanceToTop > container1DistanceToTop) this.setState({loop: true})
   }
 
+
   render() {
+    let lastScrollTop = 0
+
+    window.addEventListener("scroll", function(){
+      const welcomePaneBack = document.getElementById('welcomePaneBack');
+      const aboutMeContainer = document.getElementById('aboutMeContainer')
+
+      const distanceToTop = aboutMeContainer.getBoundingClientRect().top;
+      const opacity = (1 - (distanceToTop / window.innerHeight))
+
+      welcomePaneBack.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`
+
+      let st = window.pageYOffset || document.documentElement.scrollTop
+      lastScrollTop = st <= 0 ? 0 : st
+    })
     return(
-      <div id="container1">
+      <div id="welcomePaneContainer">
+        <div id="welcomePaneBack" style={{width: '100%', height: '100%', zIndex: 1, position: 'absolute'}} > </div>
         <h1 className="topDrop">Hi, I'm Andrew.</h1>
         <img id="bitmoji" src={this.state.faces[this.state.picture]}/>
         <p className="keep-scrolling bottomUp">(Keep scrolling to learn more about me.)</p>

@@ -50,13 +50,13 @@ export default class Lines extends Component{
   }
 
   checkForAnimationStatus = () => {
-    var container2 = document.getElementById('container2')
-    var container2DistanceToTop = container2.getBoundingClientRect().top
+    var linesContainer = document.getElementById('linesContainer')
+    var linesContainerDistanceToTop = linesContainer.getBoundingClientRect().top
 
-    if(container2DistanceToTop < this.state.windowInnerHeight && !this.state.loop) {
+    if(linesContainerDistanceToTop < this.state.windowInnerHeight && !this.state.loop) {
       this.setState({loop: true})
     }
-    if(container2DistanceToTop > this.state.windowInnerHeight && this.state.loop) {
+    if(linesContainerDistanceToTop > this.state.windowInnerHeight && this.state.loop) {
       this.setState({loop: false})
     }
   }
@@ -141,7 +141,7 @@ export default class Lines extends Component{
 
   render() {
     return(
-      <div id="container2" ref="container2">
+      <div id="linesContainer" ref="container2">
         <canvas ref='canvas' id="canvas2"></canvas>
         {this.state.loop ? this.loop() : this.stopLoop()}
       </div>

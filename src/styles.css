@@ -1,12 +1,23 @@
 body {
   margin: 0;
-  /* background-color: black; */
 }
 
-#fadePane {
+#aboutMeInnerContainer {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  bottom: 0;
+}
+
+#aboutMeText {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#aboutMeContainer {
   width: 100vw;
   height: 150vh;
-  /* background-color: magenta; */
   position: absolute;
   top: 100vh;
   display: flex;
@@ -34,16 +45,7 @@ body {
   bottom: 0;
 }
 
-/* .scrollContainer.one {
-  background-image: url('https://s3.amazonaws.com/amacobrent/spree/products/attachments/6171/product/tp20-sky-blue-square-2048px.jpg?1419289011');
-}
-
-.scrollContainer.two {
-  background-image: url('https://images.fabric.com/images/400/400/0348615.jpg');
-} */
-
-
-#container1 {
+#welcomePaneContainer {
   width: 100vw;
   height: 100vh;
   justify-content: center;
@@ -78,7 +80,6 @@ body {
   animation-name: bottomUp;
   animation-duration: .3s;
   animation-fill-mode: forwards;
-  /* animation-timing-function: cubic-bezier(.48, .19, .64, 1.37); */
 }
 
 @keyframes topDrop {
@@ -91,9 +92,8 @@ body {
   to {bottom: 5px;}
 }
 
-#container2 {
-  /* background-color: rgba(255,255,255,0); */
-  background-color: white;
+#linesContainer {
+  background-color: rgba(255,255,255,0);
   width: 100vw;
   height: 150vh;
   justify-content: center;
