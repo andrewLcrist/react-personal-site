@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
-import image1 from '../images/1.png'
-import image2 from '../images/2.png'
-import image3 from '../images/3.png'
-import image4 from '../images/4.png'
+import image1 from '../images/dressLeft.png'
+import image2 from '../images/dressForward.png'
+import image3 from '../images/dressRight.png'
+import image4 from '../images/dressSurprise.png'
 
 export default class WelcomePane extends Component{
   constructor(){
     super()
     this.state = {
       picture: 1,
-      loop: true
+      loop: true,
+      faces: {
+        1: image1,
+        2: image2,
+        3: image3,
+        4: image4
+      }
     }
   }
 
@@ -25,10 +31,10 @@ export default class WelcomePane extends Component{
   }
 
   checkForAnimationStatus = () => {
-    var container1 = document.getElementById('container1');
-    var container2 = document.getElementById('container2');
-    var container1DistanceToTop = container1.getBoundingClientRect().top + (window.innerHeight/5);
-    var container2DistanceToTop = container2.getBoundingClientRect().top;
+    let container1 = document.getElementById('container1');
+    let container2 = document.getElementById('fadePane');
+    let container1DistanceToTop = container1.getBoundingClientRect().top + (window.innerHeight/5);
+    let container2DistanceToTop = container2.getBoundingClientRect().top
 
     if(container2DistanceToTop < container1DistanceToTop) this.setState({loop: false})
     if(container2DistanceToTop > container1DistanceToTop) this.setState({loop: true})
@@ -38,7 +44,7 @@ export default class WelcomePane extends Component{
     return(
       <div id="container1">
         <h1 className="topDrop">Hi, I'm Andrew.</h1>
-        <img id="bitmoji" src={require(`../images/${this.state.picture}.png`)}/>
+        <img id="bitmoji" src={this.state.faces[this.state.picture]}/>
         <p className="keep-scrolling bottomUp">(Keep scrolling to learn more about me.)</p>
       </div>
     )

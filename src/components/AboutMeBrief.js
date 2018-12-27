@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import thinking from '../images/Thinking.png'
+import thinking from '../images/1.png'
 
-export class FadePane extends Component {
+export class AboutMeBrief extends Component {
   calcPrevious() {
     return window.scrollY
   }
@@ -18,24 +18,22 @@ export class FadePane extends Component {
 
       fadePane.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`
 
-      var st = window.pageYOffset || document.documentElement.scrollTop
+      let st = window.pageYOffset || document.documentElement.scrollTop
       if (st > lastScrollTop && distanceToTop <= -window.innerHeight/2){
         fadePane.style.position = 'fixed'
         fadePane.style.top = '0'
         fadePane.style.height = '100vh'
-
-
       } else if ( st < lastScrollTop && container2.getBoundingClientRect().top >= window.innerHeight){
         fadePane.style.position = 'absolute'
         fadePane.style.top = '100vh'
         fadePane.style.height = '150vh'
-
       }
       lastScrollTop = st <= 0 ? 0 : st
     })
+
     return (
       <div id="fadePane">
-      <img id="thinking" src={thinking} />
+        <img id="thinking" src={thinking} />
       </div>
     )
   }

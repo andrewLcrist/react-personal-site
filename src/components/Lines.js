@@ -81,20 +81,20 @@ export default class Lines extends Component{
       logosFactoryArray
     } = this.state
 
-    let canvas = this.refs.canvas && this.refs.canvas
+    const canvas = this.refs.canvas && this.refs.canvas
     canvas.width = windowInnerWidth
     canvas.height = windowInnerHeight
-    let ctx = canvas.getContext('2d')
-    let w = windowInnerWidth
-    let h = windowInnerHeight
+    const ctx = canvas.getContext('2d')
+    const w = windowInnerWidth
+    const h = windowInnerHeight
     ctx.clearRect(0, 0, w, h)
     ctx.globalCompositeOperation = 'source-over'
-    for(var i = 0; i < totalLogos; i++){
-      var logo = logosFactoryArray[i]
+    for(let i = 0; i < totalLogos; i++){
+      let logo = logosFactoryArray[i]
 
-      for(var j = 0; j<totalLogos; j++){
+      for(let j = 0; j<totalLogos; j++){
 
-        var logo2 = logosFactoryArray[j]
+        let logo2 = logosFactoryArray[j]
 
         if(logo.color == logo2.color && this.calcDistance(logo, logo2) < 200){
           ctx.strokeStyle = logo.color
@@ -142,8 +142,8 @@ export default class Lines extends Component{
   render() {
     return(
       <div id="container2" ref="container2">
-      <canvas ref='canvas' id="canvas2"></canvas>
-      {this.state.loop ? this.loop() : this.stopLoop()}
+        <canvas ref='canvas' id="canvas2"></canvas>
+        {this.state.loop ? this.loop() : this.stopLoop()}
       </div>
     )
   }
