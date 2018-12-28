@@ -58,10 +58,12 @@ export default class WelcomePane extends Component{
     })
     return(
       <div id="welcomePaneContainer">
-        <div id="welcomePaneBack" style={{width: '100%', height: '100%', zIndex: 1, position: 'absolute'}} > </div>
-        <h1 className="topDrop">Hi, I'm Andrew.</h1>
-        <img id="bitmoji" src={this.state.faces[this.state.picture]}/>
-        <p className="keep-scrolling bottomUp">(Keep scrolling to learn more about me.)</p>
+      <div id="welcomePaneBack" style={{width: '100%', height: '100%', zIndex: 1, position: 'absolute'}} > </div>
+        <div id="welcomePaneContentsContainer">
+          <h1 className="topDrop">Hi, I'm Andrew.</h1>
+          <img id="bitmoji" className="welcomeImage" src={this.state.faces[this.state.picture]}/>
+        </div>
+        <p className="keep-scrolling bottomUp">(Scroll to learn more about me.)</p>
       </div>
     )
   }

@@ -8,7 +8,7 @@ export default class Lines extends Component{
       loop: false,
       windowInnerWidth: '',
       windowInnerHeight: '',
-      totalLogos: 300,
+      totalLogos: 200,
       logosFactoryArray: []
     }
   }
@@ -31,8 +31,8 @@ export default class Lines extends Component{
 
   init = () => {
     function Factory(){
-      const colors = ['#FA8C99','#f9eb97','#EDFA8C','#A6FA8C', '#8CF3FA', '#e2bbfd', '#994882', '#8f064c', '#c0d9d4', '#6d7eb4', '#0bc1aa', '#ff5139', '#9334fb', '#000000']
-      let randoNumber = Math.round( Math.random() * 14)
+      const colors = ['#4285f4','#34a853','#fbbc05','#ea4335']
+      let randoNumber = Math.round( Math.random() * 4)
       this.x =  window.innerWidth / 2
       this.y =  window.innerHeight / 2
       this.color = colors[randoNumber]
