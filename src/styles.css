@@ -52,6 +52,7 @@ body {
   max-height: 12rem;
   height: 100%;
   border-radius: 50%;
+  margin: .5rem;
 }
 
 #andrew {
@@ -63,7 +64,7 @@ body {
 
 #connectContainer {
   position: relative;
-  max-width: 60vw;
+  max-width: 35vw;
   max-height: 28vh;
   width: 100%;
   height: 100%;
@@ -76,7 +77,6 @@ body {
 }
 
 .contactCard {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -277,7 +277,7 @@ a {
   background-repeat: no-repeat;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .aboutMeFlex {
     display: flex;
     flex-direction: column;
