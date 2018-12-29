@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import briefcase from '../images/briefcase.png'
+import * as images from '../constants/constants'
 
 export class AboutMeBrief extends Component {
   calcPrevious() {
@@ -62,7 +62,7 @@ export class AboutMeBrief extends Component {
               <p className="aboutMeFlexRight popText popGreen">creating meaningful solutions</p>
             </div>
           </div>
-          <img id="thinking" src={briefcase} />
+          <img id="thinking" src={images.briefcase} />
         </div>
       </div>
     )

@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import profile from '../images/andrew.jpeg'
-import linkedin from '../images/Linkedin.png'
-import github from '../images/github.png'
+import * as images from '../constants/constants'
 
 export default class Lines extends Component{
   constructor(){
@@ -149,7 +147,7 @@ export default class Lines extends Component{
         <div id="connectContainer">
         <div id="connectBackground"></div>
           <div className="andrewContainer">
-            <img id="andrew" src={profile} alt="Andrew professional picture"/>
+            <img id="andrew" src={images.andrew} alt="Andrew professional picture"/>
           </div>
           <div className="contactCard">
             <h3>I'm Andrew Crist</h3>
@@ -159,13 +157,13 @@ export default class Lines extends Component{
               <a href="https://github.com/andrewLcrist" target="_blank" >
               <img
                 className="socialLogo"
-                src={github}
+                src={images.github}
               />
               </a>
               <a href="https://www.linkedin.com/in/andrew-crist/" target="_blank">
               <img
                 className="socialLogo"
-                src={linkedin}
+                src={images.linkedin}
               />
               </a>
             </div>

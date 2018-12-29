@@ -1,6 +1,5 @@
 import React from 'react'
-import linkedin from '../images/Linkedin.png'
-import github from '../images/github.png'
+import * as images from '../constants/constants'
 
 export const Logos = () => {
   return (
@@ -8,13 +7,13 @@ export const Logos = () => {
     <a href="https://github.com/andrewLcrist" target="_blank" >
     <img
       className="socialLogo"
-      src={github}
+      src={images.github}
     />
     </a>
     <a href="https://www.linkedin.com/in/andrew-crist/" target="_blank">
     <img
       className="socialLogo"
-      src={linkedin}
+      src={images.linkedin}
     />
     </a>
   </div>

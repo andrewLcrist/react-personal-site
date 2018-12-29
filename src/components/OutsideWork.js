@@ -1,11 +1,5 @@
 import React, { Component } from 'react'
-import image1 from '../images/cooking.png'
-import image2 from '../images/fishing.png'
-import image3 from '../images/frisbee.png'
-import image4 from '../images/gardening.png'
-import image5 from '../images/movieWatching.png'
-import image6 from '../images/gardening.png'
-import image7 from '../images/volleyball.png'
+import * as images from '../constants/constants'
 
 export default class OutsideWork
  extends Component{
@@ -16,31 +10,31 @@ export default class OutsideWork
       loop: true,
       faces: {
         1: {
-          image: image1,
+          image: images.cooking,
           altText: 'Andrew cooking bitmoji'
         },
         2: {
-          image: image2,
+          image: images.fishing,
           altText: 'Andrew fishing bitmoji'
         },
         3: {
-          image: image3,
+          image: images.frisbee,
           altText: 'Andrew playing frisbee bitmoji'
         },
         4: {
-          image: image4,
+          image: images.gardening,
           altText: 'Andrew gardening bitmoji'
         },
         5: {
-          image: image5,
+          image: images.movieWatching,
           altText: 'Andrew watcing movie bitmoji'
         },
         6: {
-          image: image6,
-          altText: 'Andrew gardening bitmoji'
+          image: images.reading,
+          altText: 'Andrew reading bitmoji'
         },
         7: {
-          image: image7,
+          image: images.volleyball,
           altText: 'Andrew playing volleyball bitmoji'
         }
       }

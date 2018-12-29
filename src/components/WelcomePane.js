@@ -3,6 +3,7 @@ import image1 from '../images/dressLeft.png'
 import image2 from '../images/dressForward.png'
 import image3 from '../images/dressRight.png'
 import image4 from '../images/dressSurprise.png'
+import * as images from '../constants/constants'
 
 export default class WelcomePane extends Component{
   constructor(){
@@ -12,19 +13,19 @@ export default class WelcomePane extends Component{
       loop: true,
       faces: {
         1: {
-          image: image1,
+          image: images.dressLeft,
           altText: 'Andrew bitmoji looking left'
         },
         2: {
-          image: image2,
+          image: images.dressForward,
           altText: 'Andrew bitmoji looking forward'
         },
         3: {
-          image: image3,
+          image: images.dressRight,
           altText: 'Andrew bitmoji looking right'
         },
         4: {
-          image: image4,
+          image: images.dressSurprise,
           altText: 'Andrew bitmoji looking surpised'
         }
       }
