@@ -12,7 +12,7 @@
     "build": "webpack --mode production",
     "test": "mocha --compilers js:babel-register --require test/helpers/setup.js --recursive",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d public"
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",

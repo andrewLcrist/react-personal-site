@@ -14,17 +14,22 @@ export class AboutMeBrief extends Component {
       const aboutMeContainer = document.getElementById('aboutMeContainer');
       const outsideWorkContainer = document.getElementById('outsideWorkContainer')
 
-      const distanceToTop = outsideWorkContainer.getBoundingClientRect().top;
-      const opacity = (1 - (distanceToTop / window.innerHeight))
+      const aboutMeContainerDistanceToTop = aboutMeContainer.getBoundingClientRect().top;
+      const outsideWorkContainerDistanceToTop = outsideWorkContainer.getBoundingClientRect().top;
+      const opacity = (1 - (outsideWorkContainerDistanceToTop / window.innerHeight))
 
       aboutMeContainerBack.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`
 
       let st = window.pageYOffset || document.documentElement.scrollTop
 
-      if (st > lastScrollTop && distanceToTop <= window.innerHeight){
+      console.log('outsideWorkContainerDistanceToTop', outsideWorkContainerDistanceToTop);
+
+      if (st > lastScrollTop && outsideWorkContainerDistanceToTop <= window.innerHeight){
+        console.log('if');
         aboutMeContainer.style.position = 'fixed'
         aboutMeContainer.style.top = '0'
       } else if ( st < lastScrollTop && outsideWorkContainer.getBoundingClientRect().top >= window.innerHeight){
+        console.log('else');
         aboutMeContainer.style.position = 'absolute'
         aboutMeContainer.style.top = '100vh'
       }
