@@ -11,10 +11,22 @@ export default class WelcomePane extends Component{
       picture: 1,
       loop: true,
       faces: {
-        1: image1,
-        2: image2,
-        3: image3,
-        4: image4
+        1: {
+          image: image1,
+          altText: 'Andrew bitmoji looking left'
+        },
+        2: {
+          image: image2,
+          altText: 'Andrew bitmoji looking forward'
+        },
+        3: {
+          image: image3,
+          altText: 'Andrew bitmoji looking right'
+        },
+        4: {
+          image: image4,
+          altText: 'Andrew bitmoji looking surpised'
+        }
       }
     }
   }
@@ -61,7 +73,12 @@ export default class WelcomePane extends Component{
       <div id="welcomePaneBack" style={{width: '100%', height: '100%', zIndex: 1, position: 'absolute'}} > </div>
         <div id="welcomePaneContentsContainer">
           <h1 className="topDrop">Hi, I'm Andrew.</h1>
-          <img id="bitmoji" className="welcomeImage" src={this.state.faces[this.state.picture]}/>
+          <img
+            alt={this.state.faces[this.state.picture].altText}
+            id="bitmoji"
+            className="welcomeImage"
+            src={this.state.faces[this.state.picture].image}
+          />
         </div>
         <p className="keep-scrolling bottomUp">(Scroll to learn more about me.)</p>
       </div>

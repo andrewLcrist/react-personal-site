@@ -16,20 +16,17 @@ export class AboutMeBrief extends Component {
 
       const distanceToTop = outsideWorkContainer.getBoundingClientRect().top;
       const opacity = (1 - (distanceToTop / window.innerHeight))
-      console.log('outside container distanceToTop', distanceToTop);
 
       aboutMeContainerBack.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`
 
       let st = window.pageYOffset || document.documentElement.scrollTop
 
-      if (st > lastScrollTop && distanceToTop <= window.innerHeight/2){
+      if (st > lastScrollTop && distanceToTop <= window.innerHeight){
         aboutMeContainer.style.position = 'fixed'
         aboutMeContainer.style.top = '0'
-        aboutMeContainer.style.height = '100vh'
-      } else if ( st < lastScrollTop && outsideWorkContainer.getBoundingClientRect().top >= window.innerHeight/2){
+      } else if ( st < lastScrollTop && outsideWorkContainer.getBoundingClientRect().top >= window.innerHeight){
         aboutMeContainer.style.position = 'absolute'
         aboutMeContainer.style.top = '100vh'
-        aboutMeContainer.style.height = '150vh'
       }
       lastScrollTop = st <= 0 ? 0 : st
     })

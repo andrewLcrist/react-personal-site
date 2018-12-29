@@ -85,21 +85,18 @@ export default class OutsideWork
       if (st > lastScrollTop && distanceToTop <= window.innerHeight){
         outsideWorkContainer.style.position = 'fixed'
         outsideWorkContainer.style.top = '0'
-        outsideWorkContainer.style.height = '100vh'
       } else if ( st < lastScrollTop && linesContainer.getBoundingClientRect().top >= window.innerHeight){
         outsideWorkContainer.style.position = 'absolute'
         outsideWorkContainer.style.top = '200vh'
-        outsideWorkContainer.style.height = '150vh'
       }
       lastScrollTop = st <= 0 ? 0 : st
     })
-
 
     return(
       <div id="outsideWorkContainer">
       <div id="outsideWorkBack" style={{width: '100%', height: '100%', zIndex: 1, position: 'absolute'}} > </div>
         <div id="outsideWorkContentsContainer">
-          <h2>Outside work I'm usually...</h2>
+          <h2 className="popGreen" style={{marginBottom: '5rem'}}>When I'm not working...</h2>
           <img alt={this.state.faces[this.state.picture].altText} className="welcomeImage" src={this.state.faces[this.state.picture].image}/>
         </div>
       </div>

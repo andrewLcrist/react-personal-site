@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import profile from '../images/andrew.jpeg'
+import linkedin from '../images/Linkedin.png'
+import github from '../images/github.png'
 
 export default class Lines extends Component{
   constructor(){
@@ -51,7 +54,6 @@ export default class Lines extends Component{
   checkForAnimationStatus = () => {
     var linesContainer = document.getElementById('linesContainer')
     var linesContainerDistanceToTop = linesContainer.getBoundingClientRect().top
-    console.log('linesContainerDistanceToTop', linesContainerDistanceToTop);
 
     if(linesContainerDistanceToTop < this.state.windowInnerHeight/2 && !this.state.loop) {
       this.setState({loop: true})
@@ -144,6 +146,32 @@ export default class Lines extends Component{
       <div id="linesContainer" ref="container2">
         <canvas ref='canvas' id="canvas2"></canvas>
         {this.state.loop ? this.loop() : this.stopLoop()}
+        <div id="connectContainer">
+        <div id="connectBackground"></div>
+          <div className="andrewContainer">
+            <img id="andrew" src={profile} alt="Andrew professional picture"/>
+          </div>
+          <div className="contactCard">
+            <h3>I'm Andrew Crist</h3>
+            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+            <h4>Connect with me.</h4>
+            <div style={{display: 'flex'}}>
+              <a href="https://github.com/andrewLcrist" target="_blank" >
+              <img
+                className="socialLogo"
+                src={github}
+              />
+              </a>
+              <a href="https://www.linkedin.com/in/andrew-crist/" target="_blank">
+              <img
+                className="socialLogo"
+                src={linkedin}
+              />
+              </a>
+            </div>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
