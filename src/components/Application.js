@@ -3,6 +3,7 @@ import WelcomePane from './WelcomePane'
 import Lines from './Lines'
 import {Logos} from './Logos'
 import {AboutMeBrief} from './AboutMeBrief'
+import OutsideWork from './OutsideWork'
 
 export default class Application extends Component{
   render() {
@@ -11,6 +12,7 @@ export default class Application extends Component{
         <Logos />
         <WelcomePane />
         <AboutMeBrief />
+        <OutsideWork />
         <Lines />
       </div>
     )

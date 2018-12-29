@@ -26,7 +26,6 @@ export default class Lines extends Component{
     })
     addEventListener('scroll', this.checkForAnimationStatus)
     this.init()
-    // this.allTheCanvas()
   }
 
   init = () => {
@@ -52,11 +51,12 @@ export default class Lines extends Component{
   checkForAnimationStatus = () => {
     var linesContainer = document.getElementById('linesContainer')
     var linesContainerDistanceToTop = linesContainer.getBoundingClientRect().top
+    console.log('linesContainerDistanceToTop', linesContainerDistanceToTop);
 
-    if(linesContainerDistanceToTop < this.state.windowInnerHeight && !this.state.loop) {
+    if(linesContainerDistanceToTop < this.state.windowInnerHeight/2 && !this.state.loop) {
       this.setState({loop: true})
     }
-    if(linesContainerDistanceToTop > this.state.windowInnerHeight && this.state.loop) {
+    if(linesContainerDistanceToTop > this.state.windowInnerHeight/2 && this.state.loop) {
       this.setState({loop: false})
     }
   }

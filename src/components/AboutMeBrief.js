@@ -12,19 +12,21 @@ export class AboutMeBrief extends Component {
     window.addEventListener("scroll", function(){
       const aboutMeContainerBack = document.getElementById('aboutMeContainerBack');
       const aboutMeContainer = document.getElementById('aboutMeContainer');
-      const linesContainer = document.getElementById('linesContainer')
+      const outsideWorkContainer = document.getElementById('outsideWorkContainer')
 
-      const distanceToTop = linesContainer.getBoundingClientRect().top;
+      const distanceToTop = outsideWorkContainer.getBoundingClientRect().top;
       const opacity = (1 - (distanceToTop / window.innerHeight))
+      console.log('outside container distanceToTop', distanceToTop);
 
       aboutMeContainerBack.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`
 
       let st = window.pageYOffset || document.documentElement.scrollTop
-      if (st > lastScrollTop && distanceToTop <= window.innerHeight){
+
+      if (st > lastScrollTop && distanceToTop <= window.innerHeight/2){
         aboutMeContainer.style.position = 'fixed'
         aboutMeContainer.style.top = '0'
         aboutMeContainer.style.height = '100vh'
-      } else if ( st < lastScrollTop && linesContainer.getBoundingClientRect().top >= window.innerHeight){
+      } else if ( st < lastScrollTop && outsideWorkContainer.getBoundingClientRect().top >= window.innerHeight/2){
         aboutMeContainer.style.position = 'absolute'
         aboutMeContainer.style.top = '100vh'
         aboutMeContainer.style.height = '150vh'

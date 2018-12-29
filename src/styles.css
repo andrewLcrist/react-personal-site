@@ -103,6 +103,17 @@ body {
   align-items: center;
 }
 
+#outsideWorkContentsContainer {
+  max-width: 70vw;
+    max-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 3rem;
+}
+
 #thinking {
   max-height: 50vh;
   max-width: 95vw;
@@ -131,6 +142,19 @@ body {
   flex-direction: column;
   display: flex;
   position: fixed;
+  margin-bottom: 100vh;
+  color: #4285f4;
+}
+
+#outsideWorkContainer {
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  position: absolute;
+  top: 250vh;
   margin-bottom: 100vh;
   color: #4285f4;
 }
@@ -187,7 +211,7 @@ body {
   flex-direction: column;
   display: flex;
   position: absolute;
-  top: 250vh;
+  top: 350vh;
 }
 
 .scrollContainer {
@@ -213,6 +237,7 @@ body {
   #aboutMeInnerContainer{
     display: flex;
     justify-content: center;
+    bottom: 7rem;
   }
   #aboutMeTextContainer {
     height: fit-content;
@@ -226,5 +251,9 @@ body {
   }
   .aboutMeFlexLeft {
     margin: 0 0 .5rem 0;
+  }
+
+  #outsideWorkContentsContainer {
+    bottom: 13rem;
   }
 }
