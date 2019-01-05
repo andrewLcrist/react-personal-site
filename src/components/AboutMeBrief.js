@@ -22,14 +22,11 @@ export class AboutMeBrief extends Component {
 
       let st = window.pageYOffset || document.documentElement.scrollTop
 
-      console.log('outsideWorkContainerDistanceToTop', outsideWorkContainerDistanceToTop);
 
       if (st > lastScrollTop && outsideWorkContainerDistanceToTop <= window.innerHeight){
-        console.log('if');
         aboutMeContainer.style.position = 'fixed'
         aboutMeContainer.style.top = '0'
       } else if ( st < lastScrollTop && outsideWorkContainer.getBoundingClientRect().top >= window.innerHeight){
-        console.log('else');
         aboutMeContainer.style.position = 'absolute'
         aboutMeContainer.style.top = '100vh'
       }

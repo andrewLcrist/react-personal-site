@@ -11,7 +11,6 @@ body {
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 3rem;
 }
 
 #welcomePaneContentsContainer {
@@ -165,7 +164,6 @@ a {
     justify-content: center;
     align-items: center;
     position: absolute;
-    bottom: 3rem;
 }
 
 #thinking {
@@ -196,7 +194,6 @@ a {
   flex-direction: column;
   display: flex;
   position: fixed;
-  margin-bottom: 100vh;
   color: #4285f4;
 }
 

@@ -53,10 +53,10 @@ export default class Lines extends Component{
     var linesContainer = document.getElementById('linesContainer')
     var linesContainerDistanceToTop = linesContainer.getBoundingClientRect().top
 
-    if(linesContainerDistanceToTop < this.state.windowInnerHeight/2 && !this.state.loop) {
+    if(linesContainerDistanceToTop < this.state.windowInnerHeight && !this.state.loop) {
       this.setState({loop: true})
     }
-    if(linesContainerDistanceToTop > this.state.windowInnerHeight/2 && this.state.loop) {
+    if(linesContainerDistanceToTop > this.state.windowInnerHeight && this.state.loop) {
       this.setState({loop: false})
     }
   }
