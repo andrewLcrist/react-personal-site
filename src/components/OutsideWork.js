@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import * as images from '../constants/constants'
+import * as utils from '../utils/utils'
 
 export default class OutsideWork
  extends Component{
@@ -63,28 +64,7 @@ export default class OutsideWork
   }
 
   render() {
-    let lastScrollTop = 0
-
-    window.addEventListener("scroll", function(){
-      const outsideWorkBack = document.getElementById('outsideWorkBack');
-      const outsideWorkContainer = document.getElementById('outsideWorkContainer');
-      const linesContainer = document.getElementById('linesContainer')
-
-      const distanceToTop = linesContainer.getBoundingClientRect().top;
-      const opacity = (1 - (distanceToTop / window.innerHeight))
-
-      outsideWorkBack.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`
-
-      let st = window.pageYOffset || document.documentElement.scrollTop
-      if (st > lastScrollTop && distanceToTop <= window.innerHeight){
-        outsideWorkContainer.style.position = 'fixed'
-        outsideWorkContainer.style.top = '0'
-      } else if ( st < lastScrollTop && linesContainer.getBoundingClientRect().top >= window.innerHeight){
-        outsideWorkContainer.style.position = 'absolute'
-        outsideWorkContainer.style.top = '200vh'
-      }
-      lastScrollTop = st <= 0 ? 0 : st
-    })
+    utils.scrollListener('outsideWorkBack', 'outsideWorkContainer', 'linesContainer', '200vh')
 
     return(
       <div id="outsideWorkContainer">

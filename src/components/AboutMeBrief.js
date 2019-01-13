@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import * as images from '../constants/constants'
+import * as utils from '../utils/utils'
 
 export class AboutMeBrief extends Component {
   calcPrevious() {
@@ -7,31 +8,7 @@ export class AboutMeBrief extends Component {
   }
 
   render() {
-    let lastScrollTop = 0
-
-    window.addEventListener("scroll", function(){
-      const aboutMeContainerBack = document.getElementById('aboutMeContainerBack');
-      const aboutMeContainer = document.getElementById('aboutMeContainer');
-      const outsideWorkContainer = document.getElementById('outsideWorkContainer')
-
-      const aboutMeContainerDistanceToTop = aboutMeContainer.getBoundingClientRect().top;
-      const outsideWorkContainerDistanceToTop = outsideWorkContainer.getBoundingClientRect().top;
-      const opacity = (1 - (outsideWorkContainerDistanceToTop / window.innerHeight))
-
-      aboutMeContainerBack.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`
-
-      let st = window.pageYOffset || document.documentElement.scrollTop
-
-
-      if (st > lastScrollTop && outsideWorkContainerDistanceToTop <= window.innerHeight){
-        aboutMeContainer.style.position = 'fixed'
-        aboutMeContainer.style.top = '0'
-      } else if ( st < lastScrollTop && outsideWorkContainer.getBoundingClientRect().top >= window.innerHeight){
-        aboutMeContainer.style.position = 'absolute'
-        aboutMeContainer.style.top = '100vh'
-      }
-      lastScrollTop = st <= 0 ? 0 : st
-    })
+    utils.scrollListener('aboutMeContainerBack', 'aboutMeContainer', 'outsideWorkContainer', '100vh')
 
     return (
       <div id="aboutMeContainer">
