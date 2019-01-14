@@ -3,6 +3,7 @@ import WelcomePane from './WelcomePane'
 import Lines from './Lines'
 import {Logos} from './Logos'
 import {AboutMeBrief} from './AboutMeBrief'
+import {HighlightedProject} from './HighlightedProject'
 import OutsideWork from './OutsideWork'
 
 export default class Application extends Component{

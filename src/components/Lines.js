@@ -26,6 +26,7 @@ export default class Lines extends Component{
       windowInnerHeight: innerHeight
     })
     addEventListener('scroll', this.checkForAnimationStatus)
+    addEventListener('resize', this.draw)
     this.init()
   }
 
@@ -61,12 +62,15 @@ export default class Lines extends Component{
     }
   }
 
-  allTheCanvas() {
-    const animate = this.state.loop
-    const totalLogos = this.state.totalLogos
-    const logosFactoryArray = this.state.logosFactoryArray
+  setCanvas() {
+    const {
+      windowInnerHeight,
+      windowInnerWidth
+    } = window
+    const canvas = this.refs.canvas && this.refs.canvas
     canvas.width = window.innerWidth
-    canvas.height = this.state.windowInnerHeight
+    canvas.height = window.innerHeight
+    return canvas
   }
 
   calcDistance = (p1,p2) => {
@@ -81,12 +85,10 @@ export default class Lines extends Component{
       logosFactoryArray
     } = this.state
 
-    const canvas = this.refs.canvas && this.refs.canvas
-    canvas.width = windowInnerWidth
-    canvas.height = windowInnerHeight
+    let canvas = this.setCanvas()
     const ctx = canvas.getContext('2d')
-    const w = windowInnerWidth
-    const h = windowInnerHeight
+    const w = canvas.width
+    const h = canvas.height
     ctx.clearRect(0, 0, w, h)
     ctx.globalCompositeOperation = 'source-over'
     for(let i = 0; i < totalLogos; i++){
@@ -109,10 +111,13 @@ export default class Lines extends Component{
       logo.x += logo.vx
       logo.y += logo.vy
 
-      if(logo.x > w - 1)logosFactoryArray[i].vx = -logo.vx
+      if(logo.x > w - 1) logosFactoryArray[i].vx = -logo.vx
       if(logo.x < 1) logosFactoryArray[i].vx = -logo.vx
       if(logo.y > h - 1)logosFactoryArray[i].vy = -logo.vy
       if(logo.y < 1)logosFactoryArray[i].vy = -logo.vy
+
+      if(logo.x > w + 1) logosFactoryArray[i].x = w - 5
+      if(logo.y > h + 1) logosFactoryArray[i].y = h - 5
     }
   }
 

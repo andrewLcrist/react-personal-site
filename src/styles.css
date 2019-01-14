@@ -197,7 +197,7 @@ a {
   color: #4285f4;
 }
 
-#outsideWorkContainer {
+#highlightedProjectContainer {
   width: 100vw;
   height: 100vh;
   justify-content: center;
@@ -207,7 +207,6 @@ a {
   position: absolute;
   top: 200vh;
   margin-bottom: 100vh;
-  color: #4285f4;
 }
 
 .topDrop {
@@ -243,7 +242,7 @@ a {
 
 @keyframes bottomUp {
   from {bottom: -5rem}
-  to {bottom: 5px;}
+  to {bottom: 25px;}
 }
 
 .welcomeImage {
@@ -264,6 +263,43 @@ a {
   position: absolute;
   top: 300vh;
 }
+
+
+#outsideWorkContainer {
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  position: absolute;
+  top: 400vh;
+  color: #4285f4;
+}
+/* 
+#linesContainer {
+  background-color: rgba(255,255,255,0);
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  position: absolute;
+  top: 400vh;
+}
+
+#outsideWorkContainer {
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  position: absolute;
+  top: 300vh;
+  color: #4285f4;
+} */
 
 .scrollContainer {
   height: 800px;

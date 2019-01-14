@@ -8,6 +8,7 @@ export class AboutMeBrief extends Component {
   }
 
   render() {
+    // utils.scrollListener('aboutMeContainerBack', 'aboutMeContainer', 'highlightedProjectContainer', '100vh')
     utils.scrollListener('aboutMeContainerBack', 'aboutMeContainer', 'outsideWorkContainer', '100vh')
 
     return (
